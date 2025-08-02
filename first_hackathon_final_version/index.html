@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Neliswa Qwabe Portfolio</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Toggle Switch for Dark/Light Mode -->
+  <input type="checkbox" id="mode-toggle" />
+  <label for="mode-toggle" class="toggle-label"></label>
+
+  <!-- Sticky Navigation Bar -->
+  <nav class="sticky-nav">
+    <ul>
+      <li><a href="#about">About Me</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#interests">Interests</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact Me</a></li>
+    </ul>
+  </nav>
+
+  <div class="wrapper">
+    <!-- Main Heading with glowing effect -->
+    <h1 class="main-heading">Neliswa Qwabe Portfolio</h1>
+
+    <!-- Hero Section: Profile picture right, intro text left -->
+    <section class="hero">
+      <div class="hero-content">
+        <div class="hero-text">
+          <p class="title">Junior Full Stack Software Developer</p>
+          <div class="btn-group">
+            <a href="resume_2025_07_30.pdf" class="btn" download>View Resume</a>
+            <a
+              href="https://mail.google.com/mail/?view=cm&fs=1&to=neliswaraymond01@gmail.com"
+              target="_blank"
+              class="btn alt"
+              >Email Me</a
+            >
+          </div>
+        </div>
+        <div class="profile-container animated-border">
+          <img src="neliswa.jpg" alt="Neliswa" class="profile-pic" />
+        </div>
+      </div>
+    </section>
+
+    <!-- About Me with skills icon boxes -->
+    <section id="about">
+      <h2>About Me</h2>
+      <p>
+        I’m a Junior Full Stack Software Developer fluent in various web
+        technologies. Here's a quick overview of my key skills:
+      </p>
+
+      <div class="skills-grid">
+        <!-- Skill boxes with icons and descriptions -->
+        <div class="skill-box">
+          <img
+            src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/html5.svg"
+            alt="HTML"
+            class="skill-icon"
+          />
+          <h3>HTML5</h3>
+          <p>Markup language for structuring web content.</p>
+        </div>
+
+        <div class="skill-box">
+          <img
+            src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/css3.svg"
+            alt="CSS"
+            class="skill-icon"
+          />
+          <h3>CSS3</h3>
+          <p>Style sheet language for designing beautiful web pages.</p>
+        </div>
+
+        <div class="skill-box">
+          <img
+            src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/python.svg"
+            alt="Python"
+            class="skill-icon"
+          />
+          <h3>Python</h3>
+          <p>Powerful programming language for backend and scripting.</p>
+        </div>
+
+        <div class="skill-box">
+          <img
+            src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/django.svg"
+            alt="Django"
+            class="skill-icon"
+          />
+          <h3>Django</h3>
+          <p>High-level Python web framework for rapid development.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Education Section with styled table -->
+    <section id="education">
+      <h2>Education</h2>
+      <table class="edu-table" aria-label="Education qualifications and institutions">
+        <thead>
+          <tr>
+            <th>Qualification</th>
+            <th>Institution</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Diploma in Electrical and Electronic Engineering</td>
+            <td>Mangosuthu University of Technology</td>
+          </tr>
+          <tr>
+            <td>IoT Certification</td>
+            <td>Cisco Networking Academy</td>
+          </tr>
+          <tr>
+            <td>Full Stack Developer</td>
+            <td>FNB App Academy</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Interests Section with animated bullet points -->
+    <section id="interests">
+      <h2>Interests</h2>
+      <ul class="animated-list">
+        <li>Electrical Engineering</li>
+        <li>Internet of Things (IoT)</li>
+        <li>Software Development</li>
+        <li>Tech Entrepreneurship</li>
+      </ul>
+    </section>
+
+    <!-- Projects Section with simple point list -->
+    <section id="projects">
+      <h2>Projects</h2>
+      <ul class="animated-list">
+        <li>Substation Automation and Modernization Project</li>
+        <li>Smart Automatic Water Backup System using IoT</li>
+        <li>Pine City Zoo App Project (Imaginary Zoo Map)</li>
+      </ul>
+    </section>
+
+    <!-- Contact Section with form -->
+    <section id="contact">
+      <h2>Contact Me</h2>
+      <form action="mailto:neliswaraymond01@gmail.com" method="post" enctype="text/plain">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required />
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required />
+
+        <label for="message">Message:</label>
+        <textarea id="message" name="message" rows="6" required></textarea>
+
+        <button type="submit" class="btn">Send Message</button>
+      </form>
+    </section>
+
+    <!-- Footer with social media icons -->
+    <footer>
+      <p>© 2025 Neliswa Raymond</p>
+      <div class="social-icons">
+        <a
+          href="https://www.linkedin.com/in/neliswa-qwabe-ba11321b4"
+          target="_blank"
+          class="icon linkedin"
+          aria-label="LinkedIn"></a>
+        <a
+          href="https://github.com/NeliswaQwabe"
+          target="_blank"
+          class="icon github"
+          aria-label="GitHub"
+          ></a
+        >
+        <a
+          href="https://www.facebook.com/neliswa.qwabe.50"
+          target="_blank"
+          class="icon facebook"
+          aria-label="Facebook"
+          ></a
+        >
+      </div>
+    </footer>
+  </div>
+</body>
+</html>
