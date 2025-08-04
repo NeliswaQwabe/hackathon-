@@ -25,4 +25,4 @@ A responsive and animated personal portfolio website built using only **HTML5** 
 
 1. Clone or download the repository:
    ```bash
-   git clone https://github.com/your-username/neliswa-portfolio.git
+   git clone  https://neliswaqwabe.github.io/hackathon-/
