@@ -1,0 +1,564 @@
+/* =============================
+   Root Theme Variables
+   Define colors for light and dark mode
+============================= */
+:root {
+  --bg-dark: #0f0f0f;
+  --text-dark: #f0f0f0;
+  --accent-dark: #00bcd4;
+  --box-bg-dark: #1a1a1a;
+
+  --bg-light: #ffffff;
+  --text-light: #111111;
+  --accent-light: #007acc;
+  --box-bg-light: #fefefe;
+}
+
+/* =============================
+   Base & Reset Styles
+   Reset margins, paddings and set base font
+============================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: var(--bg-dark);
+  color: var(--text-dark);
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.wrapper {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* =============================
+   Dark/Light Mode Toggle Styles
+   Hide checkbox, style label as toggle switch
+   Animate the toggle switch sliding effect
+============================= */
+#mode-toggle {
+  display: none;
+}
+
+.toggle-label {
+  position: fixed;
+  top: 4.5rem;
+  right: 1rem;
+  width: 40px;
+  height: 20px;
+  background: #777;
+  border-radius: 10px;
+  cursor: pointer;
+  z-index: 1000;
+  animation: slideIn 0.6s ease-in-out;
+}
+
+.toggle-label::after {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 16px;
+  height: 16px;
+  background: #fff;
+  border-radius: 50%;
+  transition: transform 0.3s ease;
+}
+
+/* Move the toggle knob when checked */
+#mode-toggle:checked + .toggle-label::after {
+  transform: translateX(20px);
+}
+
+/* =============================
+   Navigation Bar
+   Sticky top nav with hover underline effect on links
+============================= */
+.sticky-nav {
+  position: sticky;
+  top: 0;
+  background-color: var(--accent-dark);
+  padding: 1rem;
+  border-radius: 0 0 10px 10px;
+  z-index: 999;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  animation: slideDown 0.5s ease-in-out;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+nav a {
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+  position: relative;
+  transition: color 0.3s;
+}
+
+nav a::after {
+  content: '';
+  display: block;
+  height: 2px;
+  background: white;
+  width: 0;
+  transition: width 0.3s ease;
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+}
+
+nav a:hover::after {
+  width: 100%;
+}
+
+/* =============================
+   Dark/Light Mode Color Changes
+   Update background and text colors when toggled
+============================= */
+#mode-toggle:checked ~ nav.sticky-nav {
+  background-color: var(--accent-light);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+  color: #fff;
+}
+
+#mode-toggle:checked ~ .wrapper {
+  background-color: var(--bg-light);
+  color: var(--text-light);
+}
+
+/* Buttons adapt color on toggle */
+#mode-toggle:checked ~ .wrapper .btn {
+  background-color: var(--accent-light);
+  color: white;
+}
+
+/* Form fields color changes */
+#mode-toggle:checked ~ .wrapper form input,
+#mode-toggle:checked ~ .wrapper form textarea {
+  background-color: var(--bg-light);
+  color: var(--text-light);
+  border: 1px solid var(--accent-light);
+}
+
+/* =============================
+   Hero Section (Intro)
+   Flex container with profile image right and text left
+   Profile picture has animated border color pulse
+============================= */
+.hero-content {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  flex-direction: row-reverse; /* Profile right, text left */
+}
+
+.profile-container {
+  width: 160px;
+  height: 160px;
+  margin: 0 0 1.5rem 0;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 4px solid var(--accent-dark);
+  animation: popIn 1s ease-in-out forwards, toggleBorder 2s infinite;
+  transition: border-color 0.3s;
+}
+
+#mode-toggle:checked ~ .wrapper .profile-container {
+  border-color: var(--accent-light);
+}
+
+.profile-pic {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: relative;
+  z-index: 1;
+}
+
+.hero-text {
+  text-align: left;
+  max-width: 400px;
+}
+
+/* =============================
+   Buttons
+   Rounded buttons with bounce effect on hover
+============================= */
+.btn-group {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.btn {
+  padding: 0.7rem 1.5rem;
+  background: var(--accent-dark);
+  color: white;
+  border: none;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background 0.3s;
+  display: inline-block;
+}
+
+.btn:hover {
+  background: #0197a3;
+  animation: bounce 0.5s;
+}
+
+.btn.alt {
+  background: transparent;
+  border: 2px solid var(--accent-dark);
+  color: var(--text-dark);
+  transition: color 0.3s, border-color 0.3s;
+}
+
+#mode-toggle:checked ~ .wrapper .btn.alt {
+  border-color: var(--accent-light);
+  color: var(--text-light);
+}
+
+.btn.alt:hover {
+  background: var(--accent-dark);
+  color: #000;
+}
+
+#mode-toggle:checked ~ .wrapper .btn.alt:hover {
+  background: var(--accent-light);
+  color: #000;
+}
+
+/* =============================
+   Section Headings
+   Glow effect added on main heading
+============================= */
+.main-heading {
+  text-align: center;
+  font-size: 2.5rem;
+  margin: 1rem 0;
+  color: var(--accent-dark);
+  text-shadow:
+    0 0 5px var(--accent-dark),
+    0 0 10px var(--accent-dark),
+    0 0 20px var(--accent-dark),
+    0 0 40px var(--accent-dark);
+  transition: color 0.3s, text-shadow 0.3s;
+}
+
+#mode-toggle:checked ~ .wrapper .main-heading {
+  color: var(--accent-light);
+  text-shadow:
+    0 0 5px var(--accent-light),
+    0 0 10px var(--accent-light),
+    0 0 20px var(--accent-light),
+    0 0 40px var(--accent-light);
+}
+
+/* =============================
+   Skills Grid
+   Grid display with hover lift effect on skill boxes
+============================= */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+.skill-box {
+  background: var(--box-bg-dark);
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  padding: 1rem;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+  color: var(--text-dark);
+}
+
+#mode-toggle:checked ~ .wrapper .skill-box {
+  background: var(--box-bg-light);
+  color: var(--text-light);
+}
+
+.skill-box:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+}
+
+.skill-icon {
+  width: 48px;
+  height: 48px;
+  margin-bottom: 0.5rem;
+  filter: invert(20%) sepia(80%) saturate(600%) hue-rotate(180deg);
+  transition: filter 0.3s;
+}
+
+#mode-toggle:checked ~ .wrapper .skill-icon {
+  filter: invert(10%) sepia(90%) saturate(400%) hue-rotate(170deg);
+}
+
+/* =============================
+   Education Table
+   Styled with hover highlight and color adaptation
+============================= */
+.edu-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+  color: var(--text-dark);
+  transition: color 0.3s;
+}
+
+#mode-toggle:checked ~ .wrapper .edu-table {
+  color: var(--text-light);
+}
+
+.edu-table th,
+.edu-table td {
+  border: 1px solid var(--accent-dark);
+  padding: 0.75rem 1rem;
+  text-align: left;
+  background-color: var(--box-bg-dark);
+  transition: background-color 0.3s, border-color 0.3s;
+}
+
+#mode-toggle:checked ~ .wrapper .edu-table th,
+#mode-toggle:checked ~ .wrapper .edu-table td {
+  border-color: var(--accent-light);
+  background-color: var(--box-bg-light);
+}
+
+.edu-table th {
+  background-color: var(--accent-dark);
+  color: white;
+}
+
+#mode-toggle:checked ~ .wrapper .edu-table th {
+  background-color: var(--accent-light);
+  color: white;
+}
+
+.edu-table tbody tr:hover {
+  background-color: var(--accent-dark);
+  color: white;
+  cursor: default;
+}
+
+#mode-toggle:checked ~ .wrapper .edu-table tbody tr:hover {
+  background-color: var(--accent-light);
+  color: black;
+}
+
+/* =============================
+   Animated Bullet Lists
+   Fade-in effect with custom colored bullets
+============================= */
+.animated-list {
+  list-style: none;
+  margin-top: 1rem;
+  padding-left: 1.2rem;
+  color: var(--text-dark);
+  transition: color 0.3s;
+}
+
+#mode-toggle:checked ~ .wrapper .animated-list {
+  color: var(--text-light);
+}
+
+.animated-list li {
+  position: relative;
+  padding-left: 1.5rem;
+  margin-bottom: 0.7rem;
+  animation: fadeInUp 0.6s ease forwards;
+  opacity: 0;
+}
+
+/* Staggered animation delays */
+.animated-list li:nth-child(1) {
+  animation-delay: 0.1s;
+}
+.animated-list li:nth-child(2) {
+  animation-delay: 0.3s;
+}
+.animated-list li:nth-child(3) {
+  animation-delay: 0.5s;
+}
+.animated-list li:nth-child(4) {
+  animation-delay: 0.7s;
+}
+.animated-list li:nth-child(5) {
+  animation-delay: 0.9s;
+}
+.animated-list li:nth-child(6) {
+  animation-delay: 1.1s;
+}
+
+/* Custom bullet points */
+.animated-list li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: var(--accent-dark);
+  font-weight: bold;
+  font-size: 1.4rem;
+  line-height: 1;
+  transition: color 0.3s;
+}
+
+#mode-toggle:checked ~ .wrapper .animated-list li::before {
+  color: var(--accent-light);
+}
+
+/* =============================
+   Contact Form Styles
+============================= */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+form input,
+form textarea {
+  background-color: var(--bg-dark);
+  color: var(--text-dark);
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 0.8rem;
+  resize: vertical;
+  transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+}
+
+#mode-toggle:checked ~ .wrapper form input,
+#mode-toggle:checked ~ .wrapper form textarea {
+  background-color: var(--bg-light);
+  color: var(--text-light);
+  border-color: var(--accent-light);
+}
+
+/* =============================
+   Footer and Social Media Icons
+   Invert icons for dark mode and scale on hover
+============================= */
+footer {
+  margin-top: auto;
+  padding: 2rem 1rem;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #aaa;
+  transition: color 0.3s;
+}
+
+#mode-toggle:checked ~ footer {
+  color: #555;
+}
+
+.social-icons {
+  margin-top: 1rem;
+}
+
+.icon {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  margin: 0 0.5rem;
+  background-size: cover;
+  filter: invert(1);
+  transition: transform 0.3s;
+}
+
+.icon:hover {
+  transform: scale(1.2);
+}
+
+.linkedin {
+  background-image: url("https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/linkedin.svg");
+}
+.github {
+  background-image: url("https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/github.svg");
+}
+.facebook {
+  background-image: url("https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/facebook.svg");
+}
+
+/* =============================
+   Keyframe Animations
+============================= */
+@keyframes slideIn {
+  0% {
+    opacity: 0;
+    top: 0;
+  }
+  100% {
+    opacity: 1;
+    top: 4.5rem;
+  }
+}
+
+@keyframes slideDown {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes popIn {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes toggleBorder {
+  0%,
+  100% {
+    border-color: var(--accent-dark);
+  }
+  50% {
+    border-color: #ff0000;
+  }
+}
+
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+}
